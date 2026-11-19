@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cwtjhw5hbruum"]
+
+[ext_resource type="Script" uid="uid://0500avwsy5fl" path="res://ElliottTestScript.gd" id="1_1pgms"]
+[ext_resource type="Texture2D" uid="uid://boo428ybqi228" path="res://icon.svg" id="2_227kp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgkb1"]
+albedo_texture = ExtResource("2_227kp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8ovb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_227kp"]
+albedo_texture = ExtResource("2_227kp")
+
+[node name="Elliott Testing" type="Node3D" unique_id=960454134]
+script = ExtResource("1_1pgms")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1242896739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.033569336, 0.35961914, 0.032714844)
+material_override = SubResource("StandardMaterial3D_tgkb1")
+size = Vector3(9.064209, 0.28076172, 8.170898)
+material = SubResource("StandardMaterial3D_g8ovb")
+
+[node name="Camera3D" type="Camera3D" parent="CSGBox3D" unique_id=584585580]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7, 0)
+current = true
+script = ExtResource("1_1pgms")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=314583633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3330266, 1.4377468, -2.2376366)
+material_override = SubResource("StandardMaterial3D_227kp")
+size = Vector3(2, 2, 2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=662026198]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 5.9152846, 3.777319)
+sky_mode = 1
