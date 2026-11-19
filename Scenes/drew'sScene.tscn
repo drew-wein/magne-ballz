@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dlmdshpxcfx1q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0cd6b"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_llbgh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_llbgh"]
+
+[node name="Node3D" type="Node3D" unique_id=556643242]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=77958343]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D" unique_id=680666364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13711548, 0, 0.032348633)
+size = Vector3(5.821228, 1, 5.643799)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=773155041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0402908, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1185733178]
+shape = SubResource("SphereShape3D_0cd6b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1622199011]
+mesh = SubResource("SphereMesh_llbgh")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2144518368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6310332, 5.1094894, 1.6982181)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=907414532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5971198, 0.3012147, -2.9525914)
+shape = SubResource("SphereShape3D_llbgh")
