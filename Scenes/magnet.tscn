@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cx1jxvundcepb"]
+
+[ext_resource type="Script" uid="uid://c424tapas87nh" path="res://Scripts/magnet.gd" id="1_k8q0q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6ged0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lkl0d"]
+radius = 2.0
+
+[node name="Magnet" type="RigidBody3D" unique_id=893245327]
+editor_description = "Moved by the user to pull the player using an Area3D.
+Currently, the internal plane is the magnet's position during dragging."
+script = ExtResource("1_k8q0q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=974233419]
+shape = SubResource("SphereShape3D_6ged0")
+
+[node name="Pull" type="Area3D" parent="." unique_id=161306106]
+input_ray_pickable = false
+gravity_space_override = 3
+gravity_point = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pull" unique_id=899656542]
+shape = SubResource("SphereShape3D_lkl0d")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
