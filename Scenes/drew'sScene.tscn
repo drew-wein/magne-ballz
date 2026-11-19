@@ -27,4 +27,5 @@ mesh = SubResource("SphereMesh_llbgh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6310332, 5.1094894, 1.6982181)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=907414532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 shape = SubResource("SphereShape3D_llbgh")
