@@ -1,0 +1,9 @@
+Camera (Elliott):
+	is_top_down() function; for Magnet, header below
+		func is_top_down() -> bool:
+
+Magnet (Kate):
+	
+
+Player (Drew):
+	

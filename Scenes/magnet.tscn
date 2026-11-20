@@ -19,6 +19,9 @@ shape = SubResource("SphereShape3D_6ged0")
 input_ray_pickable = false
 gravity_space_override = 3
 gravity_point = true
+gravity_point_center = Vector3(0, 0, 0)
+gravity_direction = Vector3(0, 0, 0)
+gravity = 19.6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pull" unique_id=899656542]
 shape = SubResource("SphereShape3D_lkl0d")
