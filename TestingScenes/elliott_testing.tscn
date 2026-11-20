@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwtjhw5hbruum"]
 
-[ext_resource type="Script" uid="uid://0500avwsy5fl" path="res://ElliottTestScript.gd" id="1_1pgms"]
+[ext_resource type="Script" uid="uid://0500avwsy5fl" path="res://TestingScenes/ElliottTestScript.gd" id="1_1pgms"]
 [ext_resource type="Texture2D" uid="uid://boo428ybqi228" path="res://icon.svg" id="2_227kp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgkb1"]

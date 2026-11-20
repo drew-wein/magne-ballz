@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://cx1jxvundcepb"]
 
 [ext_resource type="Script" uid="uid://c424tapas87nh" path="res://Scripts/magnet.gd" id="1_k8q0q"]
+[ext_resource type="Material" uid="uid://dey6msxajcn0y" path="res://Textures/tempMagnet_texture.tres" id="2_hrqv2"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_6ged0"]
+material = ExtResource("2_hrqv2")
+radius = 0.2
+height = 0.4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ged0"]
+radius = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lkl0d"]
 radius = 2.0
@@ -10,9 +17,17 @@ radius = 2.0
 [node name="Magnet" type="RigidBody3D" unique_id=893245327]
 editor_description = "Moved by the user to pull the player using an Area3D.
 Currently, the internal plane is the magnet's position during dragging."
+collision_layer = 2
+freeze_mode = 1
 script = ExtResource("1_k8q0q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=974233419]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=80495658]
+editor_description = "Within this node...
+Mesh gives shape, Material (in or out of Mesh) gives color.
+A quick way of adding a texture is dragging an image onto the MeshInstance3D while it has a Mesh. The \"unlit\" look is from Mesh->Material->Shading->Shading Mode = Unshaded."
+mesh = SubResource("SphereMesh_6ged0")
+
+[node name="MagnetShape" type="CollisionShape3D" parent="." unique_id=974233419]
 shape = SubResource("SphereShape3D_6ged0")
 
 [node name="Pull" type="Area3D" parent="." unique_id=161306106]
@@ -23,7 +38,7 @@ gravity_point_center = Vector3(0, 0, 0)
 gravity_direction = Vector3(0, 0, 0)
 gravity = 19.6
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pull" unique_id=899656542]
+[node name="PullShape" type="CollisionShape3D" parent="Pull" unique_id=899656542]
 shape = SubResource("SphereShape3D_lkl0d")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

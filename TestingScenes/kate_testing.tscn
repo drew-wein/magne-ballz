@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ykt2v6r0xx33"]
+
+[ext_resource type="Script" uid="uid://dfifvjwo1vf7r" path="res://TestingScenes/tempCam_script.gd" id="1_gs7yh"]
+[ext_resource type="Texture2D" uid="uid://boo428ybqi228" path="res://icon.svg" id="1_vcx8a"]
+[ext_resource type="PackedScene" uid="uid://cx1jxvundcepb" path="res://Scenes/magnet.tscn" id="2_gs7yh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkl0d"]
+shading_mode = 0
+albedo_texture = ExtResource("1_vcx8a")
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ged0"]
+material = SubResource("StandardMaterial3D_lkl0d")
+size = Vector3(4, 0.3, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ged0"]
+size = Vector3(4, 0.3, 4)
+
+[node name="KateTesting" type="Node3D" unique_id=1554167770]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=948043445]
+transform = Transform3D(1, 0, 0, 0, 0.9063078, 0.4226183, 0, -0.4226183, 0.9063078, -0.12349594, 1.3310739, 2.2835128)
+fov = 54.11916
+script = ExtResource("1_gs7yh")
+
+[node name="Magnet" parent="." unique_id=893245327 node_paths=PackedStringArray("camera") instance=ExtResource("2_gs7yh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0149051, 0)
+camera = NodePath("../Camera3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1014243371]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=504834967]
+mesh = SubResource("BoxMesh_6ged0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1495845969]
+shape = SubResource("BoxShape3D_6ged0")

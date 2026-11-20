@@ -3,9 +3,14 @@ extends RigidBody3D
 class_name Magnet
 
 """
+Notes:
+	Magnet is on Collision Layer 2 to prevent being pulled by itself.
+"""
+
+"""
 To-Do:
 	finish drag mechanism (physics process)
-	give magnet visual presence
+
 
 For later: 
 	distance tethering to player
@@ -13,7 +18,7 @@ For later:
 
 Test:
 	everything
-	if area3D pulls parent, too
+	if area3D pulls parent, too (it does)
 """
 
 ##Enum for axis being ignored.
@@ -70,9 +75,11 @@ var mouse_plane : Plane
 var ignored_axis : axis = axis.Y:
 	set(value):
 		if value == axis.Y:
+			ignored_axis = value
 			if !topdown: 
 				topdown = true
 		elif value == axis.Z:
+			ignored_axis = value
 			if topdown: 
 				topdown = false
 		else:
@@ -83,12 +90,13 @@ var ignored_axis : axis = axis.Y:
 var topdown : bool = true:
 	set(value):
 		if value == true:
+			topdown = value
 			if ignored_axis == axis.Z:
 				ignored_axis = axis.Y
 		else:
+			topdown = value
 			if ignored_axis == axis.Y:
 				ignored_axis = axis.Z
-		topdown = value
 ##States whether the magnet should be dragged.
 var held : bool = false
 
@@ -110,7 +118,7 @@ func _physics_process(delta: float) -> void:
 		#get dragged
 		if (movement_behavior == MagBe.Snap):
 			#get snapped
-			pass
+			position = mouse
 		elif (movement_behavior == MagBe.Attract):
 			#get attracted
 			pass
@@ -121,6 +129,7 @@ func _on_input_event(cam: Node, event: InputEvent, event_position: Vector3, norm
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			held = event.pressed
+			freeze = event.pressed
 			if plane_location == PlaneLoc.Old_Player || plane_location == PlaneLoc.Old_Magnet:
 				_update_plane()
 
@@ -153,6 +162,10 @@ func _update_ignored_axis():
 
 
 func _update_mouse():
+	if !camera:
+		print("Magnet._update_mouse(): no camera detected.")
+		return
+	
 	#get mouse position on local plane
 	var mou := get_viewport().get_mouse_position()
 	var t = mouse_plane.intersects_ray(camera.project_ray_origin(mou), camera.project_ray_normal(mou))
